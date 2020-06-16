@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cici-backend
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - image: ccr.ccs.tencentyun.com/trial-dist/cici
+          imagePullPolicy: Always
+          name: cici-backend
+          command:
+            - /workspace/cici
+          ports:
+            - protocol: TCP
+              containerPort: 8090
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cici-backend
+spec:
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 8090
+      targetPort: 8090
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cici-index
+  annotations:
+    "helm.sh/resource-policy": keep
+    nginx.ingress.kubernetes.io/proxy-body-size: 100m
+spec:
+  rules:
+  - host: {{.cici_host}}
+    http:
+      paths:
+      - path: /welcome
+        backend:
+          serviceName: cici-backend
+          servicePort: 8090
+     
