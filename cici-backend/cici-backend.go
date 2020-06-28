@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-var BuildTime = "No Build Time Provided"
+var BuildStamp = "No Build Stamp Provided"
 
 func hello(w http.ResponseWriter, req *http.Request) {
 
@@ -21,15 +21,15 @@ func headers(w http.ResponseWriter, req *http.Request) {
 	}
 }
 
-func buildTime(w http.ResponseWriter, req *http.Request) {
+func buildStamp(w http.ResponseWriter, req *http.Request) {
 
-	fmt.Fprintf(w, "build time :%s", BuildTime)
+	fmt.Fprintf(w, "%s", BuildStamp)
 }
 
 func main() {
 
-	http.HandleFunc("/", buildTime)
-	http.HandleFunc("/welcome", hello)
+	http.HandleFunc("/", hello)
+	http.HandleFunc("/api/buildstamp", buildStamp)
 	http.HandleFunc("/headers", headers)
 
 	http.ListenAndServe(":8090", nil)
