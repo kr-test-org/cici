@@ -3,7 +3,7 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-const backEndAddr="http://localhost:8090"
+const backEndAddr="http://localhost:20219"
 
 module.exports = {
   dev: {
