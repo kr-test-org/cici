@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <testsuite tests="28" failures="0" time="130.444401318">
+      <testcase name="Async 常规 对新创建pipeline，创建成功处理的异步任务" classname="Pfop Suite" time="9.75117752"></testcase>
+      <testcase name="Async 常规 对新建pipeline，创建处理失败的异步任务" classname="Pfop Suite" time="10.043716176"></testcase>
+      <testcase name="Async 常规 Private新系统，共享队列，处理正常" classname="Pfop Suite" time="0.262019138"></testcase>
+      <testcase name="Async 常规 任务处于waiting状态，重建队列" classname="Pfop Suite" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="Async 常规 任务处于doing状态，重建队列" classname="Pfop Suite" time="17.327177434"></testcase>
+      <testcase name="Async 常规 [只能线上测试]创建z0 pipeline，用z1的资源做异步处理" classname="Pfop Suite" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="transform，上传前进行fop操作 音视频上传，转换格式，成功返回200" classname="Pfop Suite" time="3.435401911"></testcase>
+      <testcase name="transform，上传前进行fop操作 文字格式，转换格式，失败返回transform: invalid media" classname="Pfop Suite" time="0.040469283"></testcase>
+      <testcase name="查询持久化处理状态（prefop） 正向用例 查询persistentId处理成功，返回200" classname="Pfop Suite" time="35.084521436"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） 正向用例 单个数据命令,force＝0,触发持久化处理成功且force生效，返回200" classname="Pfop Suite" time="25.055850693"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） 正向用例 单个数据命令,force＝1,触发持久化处理成功且force生效，返回200" classname="Pfop Suite" time="3.034615513"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） 正向用例 多个数据处理命令，触发持久化处理成功，返回200" classname="Pfop Suite" time="3.570214278"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） 正向用例 bs-功能 #17047,force＝0,saveas中的key已存在，返回200" classname="Pfop Suite" time="15.062001613"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） 正向用例 avconvert，异步请求处理不支持" classname="Pfop Suite" time="3.042679078"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） 正向用例 [Private]bs-功能 #20165[fixed], notifyURL设置，回调失败，返回callback failed" classname="Pfop Suite" time="0.024684703"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） 正向用例 [Private],bs-功能 #20165[fixed], notifyURL设置，回调成功，返回200" classname="Pfop Suite" time="3.030739967"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） 正向用例 实时deleteAfterDays测试 实时deleteAfterDays 1天后删除saveas数据" classname="Pfop Suite" time="0.066691896"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） 正向用例 实时deleteAfterDays测试 实时验证前天设置的deleteAfterDays/1的文件是否存在" classname="Pfop Suite" time="0.038381577"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） 正向用例 异步deleteAfterDays测试 异步deleteAfterDays 1天后删除saveas数据" classname="Pfop Suite" time="0.01013971"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） 正向用例 异步deleteAfterDays测试 异步验证前天设置的deleteAfterDays/1的文件是否存在" classname="Pfop Suite" time="0.009151107"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） [Private]反向用例 管理凭证无效，返回401" classname="Pfop Suite" time="0.001741274"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） [Private]反向用例 不进行授权，返回401" classname="Pfop Suite" time="0.005644636"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） [Private]反向用例 请求内容不传入bucket，返回631" classname="Pfop Suite" time="0.006236023"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） [Private]反向用例 请求内容不传入key值，返回400" classname="Pfop Suite" time="0.009424139"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） [Private]反向用例 请求内容不传入指令参数fops，返回400" classname="Pfop Suite" time="0.002489552"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） [Private]反向用例 请求内容为空，返回631" classname="Pfop Suite" time="0.005428443"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） [Private]反向用例 资源不存在，返回612" classname="Pfop Suite" time="0.01274631"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） [Private]反向用例 不传入参数请求报文格式错误，返回400" classname="Pfop Suite" time="0.008349666"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） [Private]反向用例 查询不存在的persistentId，不带zone，返回612" classname="Pfop Suite" time="0.006071502"></testcase>
+      <testcase name="spock 触发持久化处理（pfop） [Private]反向用例 查询不存在的persistentId，带zone，返回612" classname="Pfop Suite" time="0.003505798"></testcase>
+      <testcase name="Async dispatch test 1个队列 10x10个任务" classname="Pfop Suite" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="Async dispatch test 1个队列 2x100个任务" classname="Pfop Suite" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="Async dispatch test 2个队列 " classname="Pfop Suite" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="Async dispatch test 2个队列 " classname="Pfop Suite" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="Async dispatch test N个队列 10x10x10个任务" classname="Pfop Suite" time="0">
+          <skipped></skipped>
+      </testcase>
+      <testcase name="Async dispatch test 2个用户 " classname="Pfop Suite" time="0">
+          <skipped></skipped>
+      </testcase>
+  </testsuite>
