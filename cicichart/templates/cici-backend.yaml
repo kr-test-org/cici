@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cici-backend
+  labels: 
+    app.kubernetes.io/name: cici
+    app.kubernetes.io/instance: cici
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cici
+      app.kubernetes.io/instance: cici
+  replicas: 1
+  template:
+    metadata: 
+      labels:
+        app.kubernetes.io/name: cici
+        app.kubernetes.io/instance: cici
+    spec:
+      containers:
+        - image: ccr.ccs.tencentyun.com/trial-dist/cici:20200624140623-64-master
+          imagePullPolicy: Always
+          name: cici-backend
+          command:
+            - /workspace/cici
+          ports:
+            - protocol: TCP
+              containerPort: 1090
+      imagePullSecrets:
+        - name: default-candidate-registry-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cici-backend
+spec:
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: {{ .Values.port }}
+      targetPort: 8090
+# ---
+# apiVersion: extensions/v1beta1
+# kind: Ingress
+# metadata:
+#   name: cici-index
+#   annotations:
+#     "helm.sh/resource-policy": keep
+#     nginx.ingress.kubernetes.io/proxy-body-size: 100m
+# spec:
+#   rules:
+#   - host: {{.cici_host}}
+#     http:
+#       paths:
+#       - path: /welcome
+#         backend:
+#           serviceName: cici-backend
+#           servicePort: 8090
+     
