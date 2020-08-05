@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-cici-backend:
+ciciBackend:
   image:
     repository: ccr.ccs.tencentyun.com/trial/cici-backend
     tag: "5f2a71d3f5cdcb14a2ad6712"

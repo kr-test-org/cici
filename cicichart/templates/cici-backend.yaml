@@ -18,9 +18,9 @@ spec:
         app.kubernetes.io/instance: cici
     spec:
       containers:
-        - image: {{ .Values.cici-backend.image.repository }}:{{ .Values.cici-backend.image.tag }}
-          imagePullPolicy: Always
-          name: cici-backend
+        - name: cici-backend
+          image: {{ .Values.ciciBackend.image.repository }}:{{ .Values.ciciBackend.image.tag }}
+          imagePullPolicy: Always 
           command:
             - /workspace/cici
           ports:
