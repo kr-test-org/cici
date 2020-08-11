@@ -1,0 +1,51 @@
+version: "1.0"
+# Stages can help you organize your steps in stages
+stages:
+  - "clone"
+  - "build"
+ # - "deploy"
+
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "https://gitlab.koderover.com/opensource/hhbs.git"
+ #   revision: "${{KR_BRANCH}}"
+#    git: "github"
+    stage: "clone"
+  build:
+    stage: "build"
+    title: 构建二进制
+    type: freestyle
+    working_directory: './hhbs/cici-backend'
+    image: 'golang:latest'
+    commands:
+      - pwd
+      - ls -al
+      - go clean && GOOS=linux GOARCH=amd64 go build -o cici  -ldflags="-X main.BuildStamp=`date +%Y-%m-%d.%H:%M:%S`" cici-backend.go
+  Docker-Build:
+    stage: build
+    title: 构建镜像
+    type: build
+    working_directory: './hhbs/cici-backend'
+    # registry: dist
+    image_name: 'cici-backend'
+    tag: '${{KR_BUILD_TIMESTAMP}}'
+    dockerfile: Dockerfile
+  #deploy:
+   # stage: deploy
+   # type: helm
+   # arguments:
+   #   action: install
+   #   namespace: liliantest
+   #    chart_name: cicichart
+   #   release_name: first
+   #   helm_version: 3.0.1
+   #   kube_context: tencent
+   #    skip_cf_stable_helm_repo: true
+      # custom_values:
+      #   - 'pat.arr="{one,two,three}"'
+      #   - 'STR_WITH_COMAS="one\,two\,three"'
+
+
+
