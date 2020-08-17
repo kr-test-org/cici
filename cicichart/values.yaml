@@ -8,7 +8,7 @@ ciciBackend:
     tag: "5f2a71d3f5cdcb14a2ad6712"
 
 port: 8090
-replicaCount: 2
+replicaCount: 3
 
 image:
   repository: nginx
