@@ -22,7 +22,7 @@ steps:
     commands:
       - pwd
       - ls -al
-      - cat nginx.yaml
+      - cat ../nginx.yaml
       - go clean && GOOS=linux GOARCH=amd64 go build -o cici  -ldflags="-X main.BuildStamp=`date +%Y-%m-%d.%H:%M:%S`" cici-backend.go
   Docker-Build:
     stage: build
