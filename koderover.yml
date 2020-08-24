@@ -9,15 +9,15 @@ steps:
   clone:
     title: "Cloning repository"
     type: "git-clone"
-    repo: "https://gitlab.koderover.com/opensource/hhbs.git"
+    repo: "https://github.com/lilianzhu/cici"
  #   revision: "${{KR_BRANCH}}"
-    git: "gitlab"
+    git: "github"
     stage: "clone"
   build:
     stage: "build"
     title: 构建二进制
     type: freestyle
-    working_directory: './hhbs/cici-backend'
+    working_directory: './cici/cici-backend'
     image: 'golang:latest'
     commands:
       - pwd
@@ -28,7 +28,7 @@ steps:
     stage: build
     title: 构建镜像
     type: build
-    working_directory: './hhbs/cici-backend'
+    working_directory: './cici/cici-backend'
     # registry: dist
     image_name: 'cici-backend'
     tag: '${{KR_BUILD_TIMESTAMP}}'
