@@ -9,7 +9,7 @@ steps:
   clone:
     title: "Cloning repository"
     type: "git-clone"
-    repo: "https://github.com/lilianzhu/cici"
+    repo: "https://github.com/lilianzhu/cicitest"
  #   revision: "${{KR_BRANCH}}"
     git: "github"
     stage: "clone"
@@ -17,7 +17,7 @@ steps:
     stage: "build"
     title: 构建二进制
     type: freestyle
-    working_directory: './cici/cici-backend'
+    working_directory: './cicitest/cici-backend'
     image: 'golang:latest'
     commands:
       - pwd
@@ -28,7 +28,7 @@ steps:
     stage: build
     title: 构建镜像
     type: build
-    working_directory: './cici/cici-backend'
+    working_directory: './cicitest/cici-backend'
     # registry: dist
     image_name: 'cici-backend'
     tag: '${{KR_BUILD_TIMESTAMP}}'
