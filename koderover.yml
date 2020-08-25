@@ -33,20 +33,31 @@ steps:
     image_name: 'cici-backend'
     tag: '${{KR_BUILD_TIMESTAMP}}'
     dockerfile: Dockerfile
-  #deploy:
-   # stage: deploy
-   # type: helm
-   # arguments:
-   #   action: install
-   #   namespace: liliantest
-   #    chart_name: cicichart
-   #   release_name: first
-   #   helm_version: 3.0.1
-   #   kube_context: tencent
-   #    skip_cf_stable_helm_repo: true
-      # custom_values:
-      #   - 'pat.arr="{one,two,three}"'
-      #   - 'STR_WITH_COMAS="one\,two\,three"'
+  Deploy:
+    cluster: local
+    kind: kubernetes
+    namespace: liliantest
+    service: cici-backend
+    title: deploying to cluster
+    type: deploy
+    candidate: 
+      #image: "cici-backend:${{KR_BUILD_TIMESTAMP}}"
+      image: '${{Docker-Build}}'
+      registry: 'trial'
+  deploy:
+    stage: deploy
+    type: helm
+    arguments:
+      action: install
+      namespace: liliantest
+      chart_name: cicichart
+      chart_repo_url: https://reg.8slan.com/chartrepo/koderover-preview
+      release_name: first
+      helm_version: 3.1.1
+      kube_context: local
+      custom_values:
+        - 'ciciBackend.image.tag="${{KR_BUILD_TIMESTAMP}}"'
+        - 'ciciBackend.image.repository="ccr.ccs.tencentyun.com/trial/cici-backend"'
 
 
 
