@@ -10,7 +10,7 @@ steps:
     title: "Cloning repository"
     type: "git-clone"
     repo: "https://github.com/lilianzhu/cicitest"
- #   revision: "${{KR_BRANCH}}"
+    revision: "${{KR_BRANCH}}"
     git: "github"
     stage: "clone"
   build:
