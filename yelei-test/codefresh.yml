@@ -1,0 +1,19 @@
+version: '1.0'
+stages:
+    - clone
+    - stage1
+steps:
+    clone-repo-0:
+        repo: 'https://github.com/lilianzhu/cici'
+        revision: master
+        title: git clone
+        type: git-clone
+        working_directory: '${{KR_VOLUME_PATH}}'
+        stage: clone
+        git: gitlab
+    hello_world_step:
+        title: free style step
+        stage: stage1
+        image: alpine
+        commands:
+            - echo '******* hello world *******'
