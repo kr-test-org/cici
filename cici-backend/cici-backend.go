@@ -9,7 +9,7 @@ var BuildStamp = "No Build Stamp Provided"
 
 func hello(w http.ResponseWriter, req *http.Request) {
 
-	fmt.Fprintf(w, "hello, my name is cici~~\n")
+	fmt.Fprintf(w, "hello, my name is lucy~~\n")
 }
 
 func headers(w http.ResponseWriter, req *http.Request) {
