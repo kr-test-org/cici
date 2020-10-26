@@ -1,3 +1,6 @@
 [submodule "kodo-browser"]
 	path = kodo-browser
 	url = https://github.com/qiniu/kodo-browser.git
+[submodule "voting-app"]
+	path = voting-app
+	url = https://github.com/10x-develop/voting-app.git
