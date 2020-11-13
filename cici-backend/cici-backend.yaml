@@ -33,7 +33,7 @@ metadata:
   name: cici-index
   annotations:
     "helm.sh/resource-policy": keep
-    nginx.ingress.kubernetes.io/proxy-body-size: 100m
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m
 spec:
   rules:
   - host: {{.cici_host}}
