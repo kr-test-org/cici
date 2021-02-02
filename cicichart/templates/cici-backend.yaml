@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cici-backend
+  name: hellocici-backend
   labels: 
     app.kubernetes.io/name: cici
     app.kubernetes.io/instance: cici
@@ -18,27 +18,30 @@ spec:
         app.kubernetes.io/instance: cici
     spec:
       containers:
-        - name: cici-backend
+        - name: hellocici-backend
           image: {{ .Values.ciciBackend.image.repository }}:{{ .Values.ciciBackend.image.tag }}
           imagePullPolicy: Always 
           command:
             - /workspace/cici
           ports:
             - protocol: TCP
-              containerPort: 1090
+              containerPort: 20219
       imagePullSecrets:
-        - name: default-candidate-registry-secret
+        - name: hello-candidate-registry-secret
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: cici-backend
+  name: hellocici-backend
+  labels:
+    app.kubernetes.io/name: cici
+    app.kubernetes.io/instance: cici
 spec:
   type: NodePort
   ports:
     - protocol: TCP
       port: {{ .Values.port }}
-      targetPort: 8090
+      targetPort: 20219
 # ---
 # apiVersion: extensions/v1beta1
 # kind: Ingress
@@ -54,6 +57,6 @@ spec:
 #       paths:
 #       - path: /welcome
 #         backend:
-#           serviceName: cici-backend
+#           serviceName: hellocici-backend
 #           servicePort: 8090
      
