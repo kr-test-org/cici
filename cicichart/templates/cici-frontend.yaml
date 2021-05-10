@@ -53,6 +53,9 @@ metadata:
     app.kubernetes.io/instance: hellocici-frontend
     app.kubernetes.io/name: hellocici-frontend
 spec:
+  selector:
+    app.kubernetes.io/instance: hellocici-frontend
+    app.kubernetes.io/name: hellocici-frontend
   type: NodePort
   ports:
     - protocol: TCP

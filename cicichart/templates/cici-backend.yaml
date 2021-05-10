@@ -37,6 +37,9 @@ metadata:
     app.kubernetes.io/name: cici
     app.kubernetes.io/instance: cici
 spec:
+  selector:
+    app.kubernetes.io/name: cici
+    app.kubernetes.io/instance: cici
   type: NodePort
   ports:
     - protocol: TCP
