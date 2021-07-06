@@ -19,15 +19,15 @@
           href="https://www.koderover.com/"
           target="_blank"
         >
-          koderover官网
+          koderover 官网
         </a>
       </li>
       <li>
         <a
-          href="https://10x.koderover.com/"
+          href="https://github.com/koderover/zadig"
           target="_blank"
         >
-          10x 演示环境
+          Github
         </a>
       </li>
       <br>
@@ -41,8 +41,8 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: '欢迎来到cici项目',
-      description: '前端采用容器化部署，后端采用传统的物理机部署',
+      msg: '欢迎来到 cici 项目',
+      description: '前端采用 Vue.js 实现，后端采用 Golang 实现',
       buildstamp: ""
     }
   },

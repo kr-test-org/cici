@@ -24,10 +24,10 @@
       </li>
       <li>
         <a
-          href="https://10x.koderover.com/"
+          href="https://github.com/koderover/zadig"
           target="_blank"
         >
-          10x 演示环境
+          Github
         </a>
       </li>
       <br>
