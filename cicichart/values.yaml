@@ -5,14 +5,14 @@
 ciciBackend:
   replicaCount: 1
   image:
-    repository: ccr.ccs.tencentyun.com/trial/cici-backend
-    tag: "20201216205551-2-master"
+    repository: ccr.ccs.tencentyun.com/koderover-public/cici-backend
+    tag: "latest"
 
 ciciFrontend:
   replicaCount: 1
   image: 
-    repository: ccr.ccs.tencentyun.com/trial/cici-frontend
-    tag: "20201216202138-1-master"
+    repository: ccr.ccs.tencentyun.com/koderover-public/cici-frontend
+    tag: "latest"
 
 domain: cici.app.8slan.com
 port: 20219

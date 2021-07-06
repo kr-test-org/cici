@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: cici-backend
-          image: ccr.ccs.tencentyun.com/trial/cici-backend:20201216202138-1-master
+          image: ccr.ccs.tencentyun.com/koderover-public/cici-backend:latest
           imagePullPolicy: Always 
           command:
             - /workspace/cici

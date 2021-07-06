@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: cici-frontend
-          image: ccr.ccs.tencentyun.com/trial/cici-frontend:20201216202138-1-master
+          image: ccr.ccs.tencentyun.com/koderover-public/cici-frontend:latest
           imagePullPolicy: Always
           ports:
             - protocol: TCP
