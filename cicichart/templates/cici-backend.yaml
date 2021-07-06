@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cici-backend
+  labels: 
+    app.kubernetes.io/name: cici
+    app.kubernetes.io/instance: cici-backend
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cici
+      app.kubernetes.io/instance: cici-backend
+  replicas: {{ .Values.ciciBackend.replicaCount }}
+  template:
+    metadata: 
+      labels:
+        app.kubernetes.io/name: cici
+        app.kubernetes.io/instance: cici-backend
+    spec:
+      containers:
+        - name: cici-backend
+          image: {{ .Values.ciciBackend.image.repository }}:{{ .Values.ciciBackend.image.tag }}
+          imagePullPolicy: Always 
+          command:
+            - /workspace/cici
+          ports:
+            - protocol: TCP
+              containerPort: 20219
+      imagePullSecrets:
+        - name: cici-registry-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cici-backend
+  labels:
+    app.kubernetes.io/name: cici
+    app.kubernetes.io/instance: cici-backend
+spec:
+  selector:
+    app.kubernetes.io/name: cici
+    app.kubernetes.io/instance: cici-backend
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: {{ .Values.port }}
+      targetPort: 20219

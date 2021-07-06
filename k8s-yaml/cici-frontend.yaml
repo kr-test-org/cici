@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cici-frontend
+  labels:
+    app.kubernetes.io/instance: cici-frontend
+    app.kubernetes.io/name: cici
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: cici-frontend
+      app.kubernetes.io/name: cici
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: cici-frontend
+        app.kubernetes.io/name: cici
+    spec:
+      containers:
+        - name: cici-frontend
+          image: ccr.ccs.tencentyun.com/trial/cici-frontend:20201216202138-1-master
+          imagePullPolicy: Always
+          ports:
+            - protocol: TCP
+              containerPort: 80
+          resources:
+            limits:
+              cpu: 1
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 100M
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cici-frontend
+  labels:
+    app.kubernetes.io/instance: cici-frontend
+    app.kubernetes.io/name: cici
+spec:
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cici-frontend
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 100m
+  labels:
+    app.kubernetes.io/instance: cici-frontend
+    app.kubernetes.io/name: cici
+spec:
+  rules:
+  - host: {{.cici_domain}}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: cici-frontend
+          servicePort: 80
+
+
+

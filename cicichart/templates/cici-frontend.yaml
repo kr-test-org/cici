@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cici-frontend
+  labels:
+    app.kubernetes.io/instance: cici-frontend
+    app.kubernetes.io/name: cici
+spec:
+  replicas: {{ .Values.ciciBackend.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: cici-frontend
+      app.kubernetes.io/name: cici
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: cici-frontend
+        app.kubernetes.io/name: cici
+    spec:
+      containers:
+        - name: cici-frontend
+          image: {{ .Values.ciciFrontend.image.repository }}:{{ .Values.ciciFrontend.image.tag }}
+          imagePullPolicy: Always
+          ports:
+            - protocol: TCP
+              containerPort: 80
+          resources:
+            limits:
+              cpu: 1
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 100M
+      imagePullSecrets:
+      - name: cici-registry-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cici-frontend
+  labels:
+    app.kubernetes.io/instance: cici-frontend
+    app.kubernetes.io/name: cici
+spec:
+  selector:
+    app.kubernetes.io/instance: cici-frontend
+    app.kubernetes.io/name: cici
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cici-frontend
+  annotations:
+    "helm.sh/resource-policy": keep
+    nginx.ingress.kubernetes.io/proxy-body-size: 100m
+  labels:
+    app.kubernetes.io/instance: cici-frontend
+    app.kubernetes.io/name: cici-frontend
+spec:
+  rules:
+  - host: {{.Values.domain}}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: cici-frontend
+          servicePort: 80
+
+
+
