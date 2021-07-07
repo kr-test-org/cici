@@ -19,7 +19,7 @@
           href="https://www.koderover.com/"
           target="_blank"
         >
-          koderover 官网
+          KodeRover 官网
         </a>
       </li>
       <li>
@@ -27,7 +27,7 @@
           href="https://github.com/koderover/zadig"
           target="_blank"
         >
-          Github
+          GitHub
         </a>
       </li>
       <br>
