@@ -15,7 +15,7 @@ const webpackConfig = require('./webpack.prod.conf')
 const spinner = ora('building for production...')
 spinner.start()
 
-shell.exec('sed "s/hyperVersion/`date +%Y-%m-%d.%H:%M:%S`/g" src/components/HelloWorld_rc.vue > src/components/HelloWorld.vue')
+shell.exec('sed "s/hyperVersion/`TZ=UTC-8 date +%Y-%m-%d.%H:%M:%S`/g" src/components/HelloWorld_rc.vue > src/components/HelloWorld.vue')
 
 rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
   if (err) throw err
