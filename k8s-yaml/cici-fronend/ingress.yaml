@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cici-frontend
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 100m
+  labels:
+    app.kubernetes.io/instance: cici-frontend
+    app.kubernetes.io/name: cici
+spec:
+  rules:
+  - host: {{.cici_domain}}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: cici-frontend
+          servicePort: 80
