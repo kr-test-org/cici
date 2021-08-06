@@ -25,5 +25,5 @@ spec:
             - /workspace/cici
           ports:
             - protocol: TCP
-              containerPort: 20219
+              containerPort: 20218
      

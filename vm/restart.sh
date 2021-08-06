@@ -2,7 +2,7 @@
 
 set -e
 
-backend_port=20219
+backend_port=20218
 
 check_port() {
         echo "正在检测端口。。。"

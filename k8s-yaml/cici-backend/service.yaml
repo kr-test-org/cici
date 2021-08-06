@@ -9,5 +9,5 @@ spec:
   type: NodePort
   ports:
     - protocol: TCP
-      port: 20219
-      targetPort: 20219
+      port: 20218
+      targetPort: 20218
